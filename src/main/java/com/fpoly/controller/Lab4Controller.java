@@ -29,6 +29,7 @@ public class Lab4Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String view = lab4Service.fillView(req);
+        userService.removeUser(10001);
         RequestDispatcher rd = req.getRequestDispatcher(view);
         rd.forward(req,resp);
     }

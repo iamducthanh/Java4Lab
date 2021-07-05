@@ -1,23 +1,24 @@
 package com.fpoly.dao.impl;
 
+import com.fpoly.constant.MethodConstant;
 import com.fpoly.dao.IUserDao;
 import com.fpoly.entity.UserEntity;
 
 public class UserDao extends AbstractDao<UserEntity> implements IUserDao {
     @Override
     public void insertUser(UserEntity userEntity) {
-        insert(userEntity);
+        excute(userEntity, MethodConstant.INSERT);
     }
 
     @Override
     public void updateUser(UserEntity userEntity) {
-        update(userEntity);
+        excute(userEntity, MethodConstant.UPDATE);
     }
 
     @Override
     public void removeUser(int id) {
         UserEntity userEntity = findById(id);
-        remove(userEntity);
+        excute(userEntity, MethodConstant.DELETE);
     }
 
     public UserEntity findById(int id){

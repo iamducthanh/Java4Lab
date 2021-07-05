@@ -16,40 +16,17 @@ public class AbstractDao<T> implements GenegicDao<T> {
     }
 
     @Override
-    public void insert(T entity) {
+    public void excute(T entity, String method) {
         EntityTransaction trans = em.getTransaction();
         try {
             trans.begin();
-            em.persist(entity);
-            trans.commit();
-        } catch (Exception e) {
-            trans.rollback();
-            e.printStackTrace();
-        } finally {
-            em.close();
-        }
-    }
-
-    @Override
-    public void update(T entity) {
-        EntityTransaction trans = em.getTransaction();
-        try {
-            trans.begin();
-            em.merge(entity);
-            trans.commit();
-        } catch (Exception e) {
-            trans.rollback();
-            e.printStackTrace();
-        } finally {
-            em.close();
-        }
-    }
-
-    @Override
-    public void remove(T entity) {
-        EntityTransaction trans = em.getTransaction();
-        try {
-            trans.begin();
+            if (method.equals("insert")) {
+                em.persist(entity);
+            } else if (method.equals("update")) {
+                em.merge(entity);
+            } else if (method.equals("remove")) {
+                em.remove(entity);
+            }
             em.remove(entity);
             trans.commit();
         } catch (Exception e) {
