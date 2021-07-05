@@ -1,0 +1,144 @@
+.fa-check-circle{
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    color: #34ce57;
+    display: none;
+}
+
+.fa-exclamation-circle{
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    color: red;
+    display: none;
+}
+
+.errorDki, .errorNgaySinh{
+    display: none;
+    color: red;
+}
+
+.contentDk{
+    width: 100vw;
+    height: 100vh;
+    margin: 100px 0px 300px 0px;
+    padding: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    z-index: 1000;
+}
+#errorSoThich{
+    color: red;
+    display: none;
+}
+.containerDangKi{
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,1);
+    width: 500px;
+    overflow: hidden;
+    max-width: 100%;
+    margin-top: 100px;
+    animation-name: animation1;
+    animation-duration: 1s;
+    position: relative;
+}
+
+.headerDK{
+    padding: 20px 40px 20px 20px;
+    background-color: rgba(194, 189, 189, 0.459);
+}
+
+.headerDK h2{
+    margin: 0;
+}
+
+.formDangKi{
+    padding: 30px 40px 30px 20px;
+}
+
+.controlDK{
+    margin-bottom:20px;
+    position: relative;
+}
+.controlDK1{
+    margin-bottom:20px;
+}
+.errorNgaySinh{
+    display: none;
+    color: red;
+}
+
+.error{
+    color: red;
+    visibility: unset;
+}
+
+.controlDK input{
+    border: 1px solid #555353f0;
+    border-radius: 5px;
+    display: block;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+    margin: 4px;
+}
+
+textarea{
+    border: 1px solid #555353f0;
+    border-radius: 5px;
+    display: block;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+    margin: 4px;
+}
+
+select{
+    border: 1px solid #555353f0;
+    border-radius: 5px;
+    display: block;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+    margin: 4px;
+}
+
+option{
+    height: 30px;
+}
+
+.controlDK i{
+    position: absolute;
+    top: 34px;
+    right: -10px;
+}
+
+.fa-check-circle{
+    color: green;
+}
+.fa-exclamation-circle{
+    color: red;
+}
+
+
+@keyframes animation1{
+    0%{
+        margin-top: 100px;
+    }
+    1%{
+        margin-top: 500px;
+    }
+    100%{
+        margin-top: 100px;
+    }
+}
+
+.bgrLogin{
+    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1024px-User_icon_2.svg.png");
+}
+
+
