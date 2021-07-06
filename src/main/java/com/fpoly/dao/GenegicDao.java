@@ -1,5 +1,10 @@
 package com.fpoly.dao;
 
+import com.fpoly.dao.impl.UserDao;
+
+import java.util.List;
+
 public interface GenegicDao<T> {
-    void excute(T entity, String method);
+    int excuteUpdate(T entity, String method);
+    List<T> excuteQuery(String jpql, Class<T> aClass, Object... parameters);
 }

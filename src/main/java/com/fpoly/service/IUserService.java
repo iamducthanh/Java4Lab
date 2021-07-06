@@ -6,4 +6,5 @@ public interface IUserService {
     void insertUser(UserEntity userEntity);
     void updateUser(UserEntity userEntity);
     void removeUser(int id);
+    UserEntity findByUsernameAndPassword(String username, String password);
 }

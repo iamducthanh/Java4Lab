@@ -20,4 +20,9 @@ public class UserService implements IUserService {
     public void removeUser(int id) {
         new UserDao().removeUser(id);
     }
+
+    @Override
+    public UserEntity findByUsernameAndPassword(String username, String password) {
+        return new UserDao().findByUsernameAndPassword(username, password);
+    }
 }

@@ -1,10 +1,14 @@
 package com.fpoly.dao.impl;
 
+import com.fpoly.constant.MethodConstant;
 import com.fpoly.dao.GenegicDao;
+import com.fpoly.entity.UserEntity;
 import com.fpoly.utils.JpaUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class AbstractDao<T> implements GenegicDao<T> {
     public EntityManager em = JpaUtil.getJpaUtil().getEntityManager();
@@ -16,15 +20,15 @@ public class AbstractDao<T> implements GenegicDao<T> {
     }
 
     @Override
-    public void excute(T entity, String method) {
+    public int excuteUpdate(T entity, String method) {
         EntityTransaction trans = em.getTransaction();
         try {
             trans.begin();
-            if (method.equals("insert")) {
+            if (method.equals(MethodConstant.INSERT)) {
                 em.persist(entity);
-            } else if (method.equals("update")) {
+            } else if (method.equals(MethodConstant.UPDATE)) {
                 em.merge(entity);
-            } else if (method.equals("remove")) {
+            } else if (method.equals(MethodConstant.DELETE)) {
                 em.remove(entity);
             }
             em.remove(entity);
@@ -32,8 +36,36 @@ public class AbstractDao<T> implements GenegicDao<T> {
         } catch (Exception e) {
             trans.rollback();
             e.printStackTrace();
+            return 0;
         } finally {
             em.close();
+            return 1;
         }
     }
+
+    @Override
+    public List<T> excuteQuery(String jpql, Class<T> aClass, Object... parameters) {
+        TypedQuery<T> query = em.createQuery(jpql, aClass);
+        if(parameters != null){
+            setParameter(query, parameters);
+        }
+        List<T> list = query.getResultList();
+        return list;
+    }
+
+    public void setParameter(TypedQuery<T> query, Object... parameters){
+        for(int i = 0; i< parameters.length;i++){
+            Object parameter = parameters[i];
+            int index = i + 1;
+            query.setParameter(index, parameter);
+        }
+    }
+
+//    public List<T> findByPage(int firstPage, int maxResult, Class<T> aClass){
+//        String jpql = "SELECT o FROM UserEntity o";
+//        TypedQuery<T> query = em.createQuery(jpql, aClass);
+//        query.setFirstResult(firstPage);
+//        query.setMaxResults(maxResult);
+//        return query.getResultList();
+//    }
 }

@@ -71,8 +71,15 @@ public class Lab3Controller extends HttpServlet {
             String noiDung = req.getParameter("noiDung");
             String filePath = req.getParameter("fileDinhKem");
             Part part = req.getPart("tepDinhKem");
+            String path = req.getParameter("fileDinhKem");
             try {
-                lab3Service.sendMail(to,tieuDe,noiDung,filePath,part);
+                if(path.length() > 0){
+                    System.out.println("có pat");
+                    lab3Service.sendMail(to,tieuDe,noiDung,filePath,part);
+                } else {
+                    System.out.println("no part");
+                    lab3Service.sendMail(to,tieuDe,noiDung,filePath,null);
+                }
             } catch (MessagingException e) {
                 e.printStackTrace();
             }

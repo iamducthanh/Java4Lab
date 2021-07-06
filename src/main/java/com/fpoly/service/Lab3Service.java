@@ -101,7 +101,6 @@ public class Lab3Service {
                 return new PasswordAuthentication(username, password);
             }
         });
-
         MimeMessage mimeMessage = new MimeMessage(session);
         mimeMessage.setFrom(new InternetAddress("mrthanh260801@gmail.com"));
         mimeMessage.setRecipients(Message.RecipientType.TO,to);
@@ -109,7 +108,7 @@ public class Lab3Service {
         mimeMessage.setText(noiDung, "utf-8","html");
         mimeMessage.setReplyTo(mimeMessage.getFrom());
         System.out.println(path);
-        if(path.length() > -1){
+        if(!path.isEmpty()){
             File dir = new File("C:\\file");
             if (!dir.exists()) {
                 dir.mkdirs();
