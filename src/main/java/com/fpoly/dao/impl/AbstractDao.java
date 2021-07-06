@@ -31,14 +31,12 @@ public class AbstractDao<T> implements GenegicDao<T> {
             } else if (method.equals(MethodConstant.DELETE)) {
                 em.remove(entity);
             }
-            em.remove(entity);
             trans.commit();
         } catch (Exception e) {
             trans.rollback();
             e.printStackTrace();
             return 0;
         } finally {
-            em.close();
             return 1;
         }
     }
@@ -61,11 +59,4 @@ public class AbstractDao<T> implements GenegicDao<T> {
         }
     }
 
-//    public List<T> findByPage(int firstPage, int maxResult, Class<T> aClass){
-//        String jpql = "SELECT o FROM UserEntity o";
-//        TypedQuery<T> query = em.createQuery(jpql, aClass);
-//        query.setFirstResult(firstPage);
-//        query.setMaxResults(maxResult);
-//        return query.getResultList();
-//    }
 }

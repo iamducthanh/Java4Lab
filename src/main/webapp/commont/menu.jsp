@@ -66,8 +66,9 @@
                         </a>
                         <div class="collapse" id="pagesCollapseError4" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="<c:url value="/lab4/items"/>">Danh sách item</a>
-                                <a class="nav-link" href="<c:url value="/lab4/user-management"/>">Quản lí người dùng</a>
+                                <a class="nav-link" href="<c:url value="/lab5/test-jpa"/>">Test Jpa</a>
+                                <a class="nav-link" href="<c:url value="/lab5/quan-li-user"/>">Quản lí user</a>
+
                             </nav>
                         </div>
                     </nav>

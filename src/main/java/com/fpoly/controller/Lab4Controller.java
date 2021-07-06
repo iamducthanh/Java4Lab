@@ -21,16 +21,11 @@ public class Lab4Controller extends HttpServlet {
     @Inject
     private Lab4Service lab4Service;
 
-    @Inject
-    private UserService userService;
-
     static List<Lab4UserModel> listUser = new ArrayList<>();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String view = lab4Service.fillView(req);
-        UserEntity userEntity = userService.findByUsernameAndPassword("admin", "123");
-        System.out.println(userEntity.getFullname());
         RequestDispatcher rd = req.getRequestDispatcher(view);
         rd.forward(req,resp);
     }

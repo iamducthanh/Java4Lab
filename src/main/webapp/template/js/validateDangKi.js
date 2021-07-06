@@ -1,6 +1,7 @@
 document.getElementById("submitDK").onclick = validateDangKi;
 var check = false;
 function validateDangKi(){
+
     var username = document.getElementsByName("username")[0].value;
     var password = document.getElementsByName("password")[0].value;
     if(username.trim().length == 0){

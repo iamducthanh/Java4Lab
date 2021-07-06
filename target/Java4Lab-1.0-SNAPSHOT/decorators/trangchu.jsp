@@ -28,6 +28,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="<c:url value="/template/scripts.js"/>"></script>
     <script src="<c:url value="/template/js/validateDangKi.js" />"></script>
+    <script src="<c:url value="/template/js/validateAddUser.js" />"></script>
     <script src="<c:url value="/template/sweetalert2.all.min.js" />"></script>
 
 </body>

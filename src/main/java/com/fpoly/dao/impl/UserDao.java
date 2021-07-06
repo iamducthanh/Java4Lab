@@ -28,8 +28,7 @@ public class UserDao extends AbstractDao<UserEntity> implements IUserDao {
     @Override
     public List<UserEntity> findAll() {
         String jpql = "SELECT o FROM UserEntity o";
-        TypedQuery<UserEntity> query = em.createQuery(jpql, UserEntity.class);
-        List<UserEntity> list = query.getResultList();
+        List<UserEntity> list = excuteQuery(jpql, UserEntity.class);
         return list;
     }
 
@@ -46,14 +45,27 @@ public class UserDao extends AbstractDao<UserEntity> implements IUserDao {
         return list.isEmpty() ? null : list.get(0);
     }
 
-//    @Override
-//    public List<UserEntity> findByPage(int firstPage, int maxResult, Class<UserEntity> userEntityClass) {
-//        String jpql = "SELECT o FROM UserEntity o";
-//        TypedQuery<UserEntity> query = em.createQuery(jpql, UserEntity.class);
-//        query.setFirstResult(firstPage);
-//        query.setMaxResults(maxResult);
-//        return query.getResultList();
-//    }
+    public List<UserEntity> findByPage(int page, int size) {
+        String jpql = "SELECT o FROM UserEntity o";
+        TypedQuery<UserEntity> query = em.createQuery(jpql, UserEntity.class);
+        query.setFirstResult(page * size);
+        query.setMaxResults(size);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<UserEntity> findByKeyword(String keyword){
+        String jpql = "SELECT o FROM UserEntity o WHERE o.fullname LIKE ?1";
+        List<UserEntity> list = excuteQuery(jpql, UserEntity.class, keyword);
+        return list;
+    }
+
+    @Override
+    public List<UserEntity> findByRole(int role) {
+        String jpql = "SELECT o FROM UserEntity o WHERE o.role = ?1";
+        List<UserEntity> list = excuteQuery(jpql, UserEntity.class, role);
+        return list;
+    }
 
 
 }
