@@ -15,6 +15,7 @@
                     <h2>Thông tin nhân viên</h2>
                 </div>
                 <form method="post" class="formDangKi" id="form">
+                    <input name="idUser" type="hidden" value="${user.id}">
                     <div class="controlDK">
                         <lable>Tên đăng nhập:</lable>
                         <input
@@ -33,10 +34,10 @@
                         <p style="color: red; display: none" class="errorDkiName">Tên đăng nhập phải tối thiểu 5 kí tự và không được có kí tự đặc biệt!</p>
                         <p
                                 <c:if test="${trungName != null}" >
-                                    style="border: 1px solid red; color: red; display: unset"
+                                    style="color: red; display: unset"
                                 </c:if>
                                 <c:if test="${trungName == null}" >
-                                    style="border: 1px solid red; color: red; display: none"
+                                    style="color: red; display: none"
                                 </c:if>
                                 class="errorDkiName">Tên đăng nhập này đã tồn tại!</p>
                     </div>
@@ -77,10 +78,21 @@
                         </c:if>
                     </div>
 
-                    <div class="btn btn-warning" id="submitAddUser" style="display: inline-block">Create</div>
-                    <button id="adduser" style="display: none" type="submit"
-                            formaction="<c:url value="/lab5/quan-li-user/add"/>" class="btn btn-warning">Create
-                    </button>
+                    <c:if test="${btnEdit == null}">
+                        <div class="btn btn-warning" id="submitAddUser" style="display: inline-block">Create</div>
+                        <button id="adduser" style="display: none" type="submit"
+                                formaction="<c:url value="/lab5/quan-li-user/add"/>" class="btn btn-warning">Create
+                        </button>
+                    </c:if>
+
+                    <c:if test="${btnEdit != null}">
+                        <div class="btn btn-warning" id="submitAddUser" style="display: inline-block">Update</div>
+                        <button id="adduser" style="display: none" type="submit"
+                                formaction="<c:url value="/lab5/quan-li-user/update"/>" class="btn btn-warning">Create
+                        </button>
+                    </c:if>
+
+
                     <div class="btn btn-danger" onclick="closeForm()">Cancel</div>
                 </form>
             </div>
