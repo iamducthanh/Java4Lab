@@ -14,7 +14,7 @@
     display: none;
 }
 
-.errorDki, .errorNgaySinh{
+.errorDki, .errorNgaySinh, .errorDkiName{
     display: none;
     color: red;
 }

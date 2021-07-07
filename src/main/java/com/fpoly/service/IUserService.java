@@ -14,6 +14,6 @@ public interface IUserService {
     List<UserEntity> findByRole(int role);
     List<UserEntity> findAll();
     UserEntity findById(int id);
-
+    UserEntity findByUsername(String username);
 
 }

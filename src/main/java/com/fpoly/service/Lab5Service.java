@@ -3,30 +3,16 @@ package com.fpoly.service;
 import com.fpoly.dao.impl.UserDao;
 import com.fpoly.entity.UserEntity;
 import com.fpoly.service.impl.UserService;
+import org.apache.commons.beanutils.BeanUtils;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class Lab5Service {
     @Inject
     private UserService userService;
-
-    @Inject
-    private UserDao userDao;
-
-    public String fillView(HttpServletRequest req) {
-        String uri = req.getRequestURI();
-        String view = "";
-        if (uri.contains("test-jpa")) {
-            view = "/views/lab5/testjpa.jsp";
-        } else if (uri.contains("quan-li-user")) {
-            List<UserEntity> listUser = userService.findAll();
-            req.setAttribute("listUser", listUser);
-            view = "/views/lab5/quanliuser.jsp";
-        }
-        return view;
-    }
 
     public void addUser(HttpServletRequest req) {
         String username = req.getParameter("usernameInsert");
@@ -36,6 +22,24 @@ public class Lab5Service {
         int role = Integer.parseInt(req.getParameter("roleInsert"));
         UserEntity userEntity = new UserEntity(username, password, fullname, email, role);
         userService.insertUser(userEntity);
+    }
+
+    public boolean addUserBai3(HttpServletRequest req) throws InvocationTargetException, IllegalAccessException {
+        String username = req.getParameter("usernameBai3");
+        String password = req.getParameter("passwordBai3");
+        String fullname = req.getParameter("fullnameBai3");
+        String email = req.getParameter("emailBai3");
+        int role = Integer.parseInt(req.getParameter("roleBai3"));
+        UserEntity userEntity = userService.findByUsername(username);
+        UserEntity userEntityAdd = new UserEntity(username, password, fullname, email, role);
+        if(userEntity == null){
+            userService.insertUser(userEntityAdd);
+            return true;
+        } else {
+            req.setAttribute("trungName", "on");
+            req.setAttribute("user", userEntityAdd);
+            return false;
+        }
     }
 
     public void updateUser(HttpServletRequest req) {

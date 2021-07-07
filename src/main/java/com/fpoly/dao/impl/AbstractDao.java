@@ -2,7 +2,6 @@ package com.fpoly.dao.impl;
 
 import com.fpoly.constant.MethodConstant;
 import com.fpoly.dao.GenegicDao;
-import com.fpoly.entity.UserEntity;
 import com.fpoly.utils.JpaUtil;
 
 import javax.persistence.EntityManager;
