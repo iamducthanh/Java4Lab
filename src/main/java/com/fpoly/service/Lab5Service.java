@@ -111,4 +111,29 @@ public class Lab5Service {
         });
         req.setAttribute("outFindByPage", ketqua.toString());
     }
+
+    public boolean updateUserBai3(HttpServletRequest req){
+        int id = Integer.parseInt(req.getParameter("idUser"));
+        String username = req.getParameter("usernameBai3");
+        String password = req.getParameter("passwordBai3");
+        String fullname = req.getParameter("fullnameBai3");
+        String email = req.getParameter("emailBai3");
+        int role = Integer.parseInt(req.getParameter("roleBai3"));
+        UserEntity userEntity = userService.findByUsernameAndId(username, id);
+        UserEntity userEntityAdd = new UserEntity(username, password, fullname, email, role);
+        if(userEntity == null){
+            UserEntity userBefore = userService.findById(id);
+            userBefore.setUsername(username);
+            userBefore.setPassword(password);
+            userBefore.setFullname(fullname);
+            userBefore.setEmail(email);
+            userBefore.setRole(role);
+            userService.updateUser(userBefore);
+            return true;
+        } else {
+            req.setAttribute("trungName", "on");
+            req.setAttribute("user", userEntityAdd);
+            return false;
+        }
+    }
 }

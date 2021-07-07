@@ -10,13 +10,13 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class AbstractDao<T> implements GenegicDao<T> {
-    public EntityManager em = JpaUtil.getJpaUtil().getEntityManager();
+    public static EntityManager em = JpaUtil.getJpaUtil().getEntityManager();
 
-    @Override
-    protected void finalize() throws Throwable {
-        em.close();
-        super.finalize();
-    }
+//    @Override
+//    protected void finalize() throws Throwable {
+//        em.close();
+//        super.finalize();
+//    }
 
     @Override
     public int excuteUpdate(T entity, String method) {
@@ -42,11 +42,13 @@ public class AbstractDao<T> implements GenegicDao<T> {
 
     @Override
     public List<T> excuteQuery(String jpql, Class<T> aClass, Object... parameters) {
+//        EntityManager em = JpaUtil.getJpaUtil().getEntityManager();
         TypedQuery<T> query = em.createQuery(jpql, aClass);
         if(parameters != null){
             setParameter(query, parameters);
         }
         List<T> list = query.getResultList();
+//        em.close();
         return list;
     }
 

@@ -14,5 +14,6 @@ public interface IUserDao extends GenegicDao<UserEntity>{
     List<UserEntity> findByKeyword(String keyword);
     List<UserEntity> findByRole(int role);
     UserEntity findByUsername(String username);
+    UserEntity findByUsernameAndId(String username, int id);
 
 }

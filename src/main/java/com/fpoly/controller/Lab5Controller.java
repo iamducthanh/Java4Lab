@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/lab5/test-jpa","/lab5/quan-li-user","/lab5/quan-li-user/add", "/lab5/add", "/lab5/delete", "/lab5/update", "/lab5/find-all", "/lab5/find-by-role", "/lab5/find-by-keyword", "/lab5/find-one", "/lab5/find-page"})
+@WebServlet(urlPatterns = {"/lab5/test-jpa","/lab5/quan-li-user","/lab5/quan-li-user/add","/lab5/quan-li-user/update", "/lab5/add", "/lab5/delete", "/lab5/update", "/lab5/find-all", "/lab5/find-by-role", "/lab5/find-by-keyword", "/lab5/find-one", "/lab5/find-page"})
 public class Lab5Controller extends HttpServlet {
     @Inject
     private Lab5Service lab5Service;
@@ -36,17 +36,23 @@ public class Lab5Controller extends HttpServlet {
                 resp.sendRedirect(req.getContextPath()+"/lab5/quan-li-user?type=removedone");
                 return;
             } else if(action != null && action.equals("edit")){
-
+                int id = Integer.parseInt(req.getParameter("id"));
+                UserEntity userEntity = userService.findById(id);
+                req.setAttribute("user", userEntity);
+                req.setAttribute("btnEdit", "on");
+                view = "/views/lab5/quanliuser.jsp";
             } else {
                 String type = req.getParameter("type");
                 if(type != null && type.equals("removedone")){
                     req.setAttribute("messenge","Xóa thành công!");
                 }
-                List<UserEntity> listUser = userService.findAll();
-                req.setAttribute("listUser", listUser);
                 view = "/views/lab5/quanliuser.jsp";
             }
+            System.out.println("abc");
+            List<UserEntity> listUser = userService.findAll(); // load dữ liệu ở đây
+            req.setAttribute("listUser", listUser);
         }
+
         RequestDispatcher rd = req.getRequestDispatcher(view);
         rd.forward(req, resp);
     }
@@ -63,7 +69,7 @@ public class Lab5Controller extends HttpServlet {
         } else if (uri.contains("delete")) {
             lab5Service.deleteUser(req);
             view = "/views/lab5/testjpa.jsp";
-        } else if (uri.contains("update")) {
+        } else if (uri.contains("lab5/update")) {
             lab5Service.updateUser(req);
             view = "/views/lab5/testjpa.jsp";
         } else if (uri.contains("find-all")) {
@@ -82,16 +88,30 @@ public class Lab5Controller extends HttpServlet {
             lab5Service.findByPage(req);
             view = "/views/lab5/testjpa.jsp";
         } else if(uri.contains("quan-li-user/add")){
-            System.out.println("done add");
             try {
                 if(lab5Service.addUserBai3(req)){
                     resp.sendRedirect(req.getContextPath()+"/lab5/quan-li-user");
                     return;
                 } else {
+                    List<UserEntity> listUser = userService.findAll();
+                    req.setAttribute("listUser", listUser);
                     view = "/views/lab5/quanliuser.jsp";
                 }
             } catch (Exception e) {
                 e.printStackTrace();
+            }
+        } else if(uri.contains("quan-li-user/update")){
+            if(lab5Service.updateUserBai3(req)){
+//                doGet(req, resp);
+                resp.sendRedirect(req.getContextPath()+"/lab5/quan-li-user"); // dòng này sẽ gọi lại doget
+                // đây là update thành công
+                return;
+            } else {
+                // chỗ này là update ko đc
+                List<UserEntity> listUser = userService.findAll();
+                req.setAttribute("btnEdit","on");
+                req.setAttribute("listUser", listUser);
+                view = "/views/lab5/quanliuser.jsp";
             }
         }
         RequestDispatcher rd = req.getRequestDispatcher(view);

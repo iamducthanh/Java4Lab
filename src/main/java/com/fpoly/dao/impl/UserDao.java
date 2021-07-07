@@ -74,5 +74,12 @@ public class UserDao extends AbstractDao<UserEntity> implements IUserDao {
         return list.isEmpty() ? null : list.get(0);
     }
 
+    @Override
+    public UserEntity findByUsernameAndId(String username, int id) {
+        String jpql = "SELECT o FROM UserEntity o WHERE o.username = ?1 and o.id != ?2";
+        List<UserEntity> list = excuteQuery(jpql, UserEntity.class, username, id);
+        return list.isEmpty() ? null : list.get(0);
+    }
+
 
 }

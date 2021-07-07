@@ -59,4 +59,9 @@ public class UserService implements IUserService {
     public UserEntity findByUsername(String username) {
         return userDao.findByUsername(username);
     }
+
+    @Override
+    public UserEntity findByUsernameAndId(String username, int id) {
+        return userDao.findByUsernameAndId(username, id);
+    }
 }

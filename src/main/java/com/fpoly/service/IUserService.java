@@ -15,5 +15,5 @@ public interface IUserService {
     List<UserEntity> findAll();
     UserEntity findById(int id);
     UserEntity findByUsername(String username);
-
+    UserEntity findByUsernameAndId(String username, int id);
 }
