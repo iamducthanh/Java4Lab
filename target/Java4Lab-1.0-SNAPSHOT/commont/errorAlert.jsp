@@ -1,4 +1,14 @@
-<div id="errorLogin" class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto; display: ${display}">
+
+<%@include file="/commont/taglib.jsp"%>
+
+<div id="errorAlert" class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto;
+<c:if test="${messenge == null}" >
+        display: none;
+</c:if>
+<c:if test="${messenge != null}" >
+        display: unset;
+</c:if>
+        ">
     <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
          class="swal2-popup swal2-modal swal2-icon-error swal2-show" tabindex="-1" role="dialog"
          aria-live="assertive" aria-modal="true" style="display: flex;">
@@ -13,7 +23,7 @@
 
         <div class="swal2-actions">
             <div class="swal2-loader"></div>
-            <button type="button" class="swal2-confirm swal2-styled" id="closeAl" aria-label=""
+            <button type="button" class="swal2-confirm swal2-styled" id="closeAlertError" aria-label=""
                     style="display: inline-block;">OK
             </button>
         </div>
@@ -21,11 +31,10 @@
 </div>
 
 <script>
-    document.getElementById("closeAl").onclick = closeAlert;
+    document.getElementById("closeAlertError").onclick = closeAlert;
 
     function closeAlert() {
-        console.log(document.getElementById("errorLogin"));
-        document.getElementById("errorLogin").style.display = 'none';
+        document.getElementById("errorAlert").style.display = 'none';
     }
 
 </script>

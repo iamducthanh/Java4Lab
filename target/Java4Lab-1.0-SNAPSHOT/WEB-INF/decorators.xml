@@ -6,5 +6,9 @@
 
     <decorator name="login" page="login.jsp">
         <pattern>/dang-nhap</pattern>
+        <pattern>/sign-in*</pattern>
+        <pattern>/sign-up*</pattern>
+        <pattern>/forgot-password*</pattern>
     </decorator>
+
 </decorators>

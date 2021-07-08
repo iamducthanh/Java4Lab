@@ -13,7 +13,10 @@
     <link href="<c:url value="/template/styleMe.css"/>" rel="stylesheet"/>
     <link href="<c:url value="/template/css/listItem.css"/>" rel="stylesheet"/>
 </head>
-<body class="sb-nav-fixed">
+<body class="sb-nav-fixed preloading">
+<div class="loader" style="display: none">
+    <span class="fas fa-spinner xoay icon" style="color: #00aeff"></span>
+</div>
 <%@include file="/commont/header.jsp" %>
 <div id="layoutSidenav">
     <%@include file="/commont/menu.jsp" %>
@@ -30,6 +33,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 <script src="<c:url value="/template/scripts.js"/>"></script>
+<script src="<c:url value="/template/js/myscript.js"/>"></script>
 <script src="<c:url value="/template/js/validateDangKi.js" />"></script>
 <script src="<c:url value="/template/js/validateAddUser.js" />"></script>
 <script src="<c:url value="/template/sweetalert2.all.min.js" />"></script>

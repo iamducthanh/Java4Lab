@@ -39,7 +39,6 @@
             </tr>
         </c:forEach>
         </tbody>
-        <button onclick="showComfirmAlert();">ddddd</button>
     </table>
     <div id="comfirm" class="swal2-container swal2-center swal2-backdrop-show" style="display: none; overflow-y: auto; text-align: center;">
         <div aria-labelledby="swal2-title" aria-describedby="swal2-html-container"
