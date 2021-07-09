@@ -14,6 +14,8 @@
 </head>
 <body class="bg-gradient-primary">
 <div class="container">
+    <%@include file="/commont/errorAlert.jsp"%>
+    <%@include file="/commont/successAlert3.jsp"%>
     <div class="row justify-content-center">
         <div class="col-xl-10 col-lg-12 col-md-9">
             <div class="card o-hidden border-0 shadow-lg my-5">
@@ -23,19 +25,18 @@
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
-                                    <p class="mb-4">We get it, stuff happens. Just enter your email address below
-                                        and we'll send you a link to reset your password!</p>
+                                    <h1 class="h4 text-gray-900 mb-2">Quên mật khẩu?</h1>
+                                    <p class="mb-4">Nhập địa chỉ email mà bạn dùng để đăng kí tài khoản của mình, chúng tôi sẽ gửi cho bạn một mã xác nhận giúp bạn lấy lại mật khẩu!</p>
                                 </div>
-                                <form class="user">
+                                <form class="user" method="post">
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user"
+                                        <input type="text" class="form-control form-control-user"
                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                               placeholder="Enter Email Address...">
+                                               value="${emailFalse}" name="emailforgot" placeholder="Địa chỉ email">
                                     </div>
-                                    <a href="login.html" class="btn btn-primary btn-user btn-block onloader">
+                                    <button type="submit" formaction="<c:url value="/forgot-password" />" class="btn btn-primary btn-user btn-block onloader">
                                         Reset Password
-                                    </a>
+                                    </button>
                                 </form>
                                 <hr>
                                 <div class="text-center">

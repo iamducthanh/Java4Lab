@@ -16,7 +16,7 @@
             <h2 class="swal2-title" id="swal2-title" style="display: flex;">Đăng kí thành công!</h2>
         </div>
         <div class="swal2-actions">
-            <button type="button" id="closeAl" class="swal2-confirm swal2-styled" aria-label=""
+            <button type="button" id="closeAlertSuccess" class="swal2-confirm swal2-styled" aria-label=""
                     style="display: inline-block;">OK
             </button>
         </div>
@@ -24,10 +24,9 @@
 </div>
 
 <script>
-    document.getElementById("closeAl").onclick = closeAlert;
+    document.getElementById("closeAlertSuccess").onclick = closeAlert;
 
     function closeAlert() {
-        console.log(document.getElementById("errorLogin"));
         document.getElementById("errorLogin").style.display = 'none';
     }
 

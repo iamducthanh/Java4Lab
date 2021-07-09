@@ -32,6 +32,6 @@ public class CookieUtil {
                 }
             }
         }
-        return "";
+        return null;
     }
 }

@@ -64,4 +64,9 @@ public class UserService implements IUserService {
     public UserEntity findByUsernameAndId(String username, int id) {
         return userDao.findByUsernameAndId(username, id);
     }
+
+    @Override
+    public UserEntity findByEmail(String email) {
+        return userDao.findByEmail(email);
+    }
 }

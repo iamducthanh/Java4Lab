@@ -9,6 +9,10 @@
         <pattern>/sign-in*</pattern>
         <pattern>/sign-up*</pattern>
         <pattern>/forgot-password*</pattern>
+        <pattern>/comfirm-email*</pattern>
+        <pattern>/change-password*</pattern>
+        <pattern>/forgot-change*</pattern>
+
     </decorator>
 
 </decorators>

@@ -22,7 +22,8 @@
                 </c:if>
 
                 <c:if test="${not empty USER}" >
-                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="<c:url value="/user-profile" />">Thông tin cá nhân</a>
+                    <a class="dropdown-item" href="<c:url value="/change-password"/> ">Đổi mật khẩu</a>
                     <div class="dropdown-divider"></div>
                     <a id="logout" class="dropdown-item onloader" style="display: none" href="<c:url value="/logout"/> ">Logout</a>
                     <div class="dropdown-item" onclick="showComfirmAlert()">Đăng xuất</div>
@@ -57,5 +58,8 @@
     }
     function showComfirmAlert(){
         document.getElementById("comfirm").style.display = 'unset';
+    }
+    function closeConfirmAlert(){
+        document.getElementById("comfirm").style.display = 'none';
     }
 </script>
