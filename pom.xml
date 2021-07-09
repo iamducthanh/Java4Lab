@@ -102,6 +102,14 @@
             <version>1.14</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.jsimone</groupId>
+            <artifactId>webapp-runner</artifactId>
+            <version>9.0.27.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+
         <!-- Spring data -->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.data</groupId>-->
