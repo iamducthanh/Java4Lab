@@ -32,6 +32,8 @@ public class Lab4Controller extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
+        resp.setCharacterEncoding("utf-8");
         String uri = req.getRequestURI();
         String view = "";
         if (uri.contains("user-management")) {

@@ -20,7 +20,7 @@
         <weld.servlet.version>2.2.9.Final</weld.servlet.version>
         <commons-beanutils-version>1.9.4</commons-beanutils-version>
         <mail.version>1.4.7</mail.version>
-        <hibernate.version>5.4.1.Final</hibernate.version>
+        <hibernate.version>5.1.2.Final</hibernate.version>
         <spring.data>2.3.9.RELEASE</spring.data>
     </properties>
 
@@ -147,7 +147,7 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat8-maven-plugin</artifactId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
             </plugin>
             <plugin>
@@ -175,6 +175,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>

@@ -30,3 +30,4 @@ com\fpoly\controller\Lab2Controller.class
 com\fpoly\service\UserLoginService.class
 com\fpoly\utils\CookieUtil.class
 com\fpoly\model\Lab4Item.class
+com\fpoly\utils\TestConnect.class

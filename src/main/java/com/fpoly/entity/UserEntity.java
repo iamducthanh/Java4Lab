@@ -1,6 +1,7 @@
 package com.fpoly.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -19,6 +20,8 @@ public class UserEntity {
     private String email;
     @Column(name = "role")
     private int role;
+//    @OneToMany(mappedBy = "user")
+//    List<FavoritesEntity> listFavorites;
 
     public UserEntity(String username, String password, String fullname, String email, int role) {
         this.username = username;
