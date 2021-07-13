@@ -12,7 +12,7 @@
         <div class="row">
             <c:forEach var="itemItem" items="${listItem}">
                 <div class="col-md-3 productItem" style="margin-bottom: 25px">
-                    <div class="card">
+                    <div class="cardLab4">
                         <div class="image-container">
                             <div class="first">
                                 <div class="d-flex justify-content-between align-items-center"> <span

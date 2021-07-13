@@ -1,6 +1,6 @@
-document.getElementById('submitAddUser').onclick = validateAddUser;
+document.getElementById('submitAddUser').onclick = validateAddUser1;
 
-function validateAddUser() {
+function validateAddUser1() {
     var check = Number(0);
     check = checkUsername(check);
     check = checkPassword(check);
@@ -18,7 +18,7 @@ const checkUsername = (check) => {
         return check = check + 1;
     } else {
         close(0)
-        check = checkUsernameUnicode(check);
+        check = checkUsernameUnicodeLab5(check);
         return check;
     }
 }
@@ -53,7 +53,7 @@ const checkEmailUser = (check) => {
     }
 }
 
-const checkUsernameUnicode = (check) => {
+const checkUsernameUnicodeLab5 = (check) => {
     if(/^[a-z\d_]{5,20}$/i.test(document.getElementsByName('usernameBai3')[0].value)){
         document.getElementsByClassName("errorDkiName")[0].style.display = 'none';
         document.getElementsByClassName("fa-exclamation-circle")[0].style.display = 'none';

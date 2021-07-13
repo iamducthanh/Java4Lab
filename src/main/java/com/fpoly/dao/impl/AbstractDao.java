@@ -41,22 +41,40 @@ public class AbstractDao<T> implements GenegicDao<T> {
     }
 
     @Override
-    public List<T> excuteQuery(String jpql, Class<T> aClass, Object... parameters) {
-//        EntityManager em = JpaUtil.getJpaUtil().getEntityManager();
+    public List<T> excuteQuery(String nameQuery, Class<T> aClass, Object... parameters) {
+        TypedQuery<T> query = em.createNamedQuery(nameQuery, aClass);
+        if(parameters != null){
+            setParameter(query, parameters);
+        }
+        List<T> list = query.getResultList();
+        return list;
+    }
+
+    @Override
+    public List<T> excuteQuery2(String jpql, Class<T> aClass, Object... parameters) {
         TypedQuery<T> query = em.createQuery(jpql, aClass);
         if(parameters != null){
             setParameter(query, parameters);
         }
         List<T> list = query.getResultList();
-//        em.close();
         return list;
     }
 
     public void setParameter(TypedQuery<T> query, Object... parameters){
-        for(int i = 0; i< parameters.length;i++){
-            Object parameter = parameters[i];
-            int index = i + 1;
-            query.setParameter(index, parameter);
+        try {
+            for(int i = 0; i< parameters.length;i++){
+                Object parameter = parameters[i];
+                int index = i + 1;
+                if (parameter instanceof Long) {
+                    query.setParameter(index, (Long) parameter);
+                } else if (parameter instanceof String) {
+                    query.setParameter(index, (String) parameter);
+                } else if (parameter instanceof Integer) {
+                    query.setParameter(index, (Integer) parameter);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

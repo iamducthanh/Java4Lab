@@ -2,6 +2,7 @@ document.getElementById("submitDKLab3").onclick = validateDangKi;
 var check = false;
 
 function validateDangKi() {
+    alert("hello 3")
     var check = 0;
     var username = document.getElementsByName("username")[0].value;
     var password = document.getElementsByName("password")[0].value;

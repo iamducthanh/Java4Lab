@@ -27,8 +27,7 @@ public class UserDao extends AbstractDao<UserEntity> implements IUserDao {
 
     @Override
     public List<UserEntity> findAll() {
-        String jpql = "SELECT o FROM UserEntity o";
-        List<UserEntity> list = excuteQuery(jpql, UserEntity.class);
+        List<UserEntity> list = excuteQuery("findAll", UserEntity.class);
         return list;
     }
 
@@ -40,8 +39,7 @@ public class UserDao extends AbstractDao<UserEntity> implements IUserDao {
 
     @Override
     public UserEntity findByUsernameAndPassword(String username, String password) {
-        String jpql = "SELECT o FROM UserEntity o WHERE o.username = ?1 and o.password = ?2";
-        List<UserEntity> list = excuteQuery(jpql, UserEntity.class, username, password);
+        List<UserEntity> list = excuteQuery("findByUsernameAndPassword", UserEntity.class, username, password);
         return list.isEmpty() ? null : list.get(0);
     }
 
@@ -55,36 +53,31 @@ public class UserDao extends AbstractDao<UserEntity> implements IUserDao {
 
     @Override
     public List<UserEntity> findByKeyword(String keyword){
-        String jpql = "SELECT o FROM UserEntity o WHERE o.fullname LIKE ?1";
-        List<UserEntity> list = excuteQuery(jpql, UserEntity.class, keyword);
+        List<UserEntity> list = excuteQuery("findByKeyword", UserEntity.class, keyword);
         return list;
     }
 
     @Override
     public List<UserEntity> findByRole(int role) {
-        String jpql = "SELECT o FROM UserEntity o WHERE o.role = ?1";
-        List<UserEntity> list = excuteQuery(jpql, UserEntity.class, role);
+        List<UserEntity> list = excuteQuery("findByRole", UserEntity.class, role);
         return list;
     }
 
     @Override
     public UserEntity findByUsername(String username) {
-        String jpql = "SELECT o FROM UserEntity o WHERE o.username = ?1";
-        List<UserEntity> list = excuteQuery(jpql, UserEntity.class, username);
+        List<UserEntity> list = excuteQuery("findByUsername", UserEntity.class, username);
         return list.isEmpty() ? null : list.get(0);
     }
 
     @Override
     public UserEntity findByUsernameAndId(String username, int id) {
-        String jpql = "SELECT o FROM UserEntity o WHERE o.username = ?1 and o.id != ?2";
-        List<UserEntity> list = excuteQuery(jpql, UserEntity.class, username, id);
+        List<UserEntity> list = excuteQuery("findByUsernameAndId", UserEntity.class, username, id);
         return list.isEmpty() ? null : list.get(0);
     }
 
     @Override
     public UserEntity findByEmail(String email) {
-        String jpql = "SELECT o FROM UserEntity o WHERE o.email = ?1";
-        List<UserEntity> list = excuteQuery(jpql, UserEntity.class, email);
+        List<UserEntity> list = excuteQuery("findByEmail", UserEntity.class, email);
         return list.isEmpty() ? null : list.get(0);
     }
 

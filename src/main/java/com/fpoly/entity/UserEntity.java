@@ -2,7 +2,16 @@ package com.fpoly.entity;
 
 import javax.persistence.*;
 import java.util.List;
-
+@NamedQueries({
+        @NamedQuery(name = "findAll", query = "SELECT o FROM UserEntity o"),
+        @NamedQuery(name = "findByUsernameAndPassword", query = "SELECT o FROM UserEntity o WHERE o.username = ?1 and o.password = ?2"),
+        @NamedQuery(name = "findByPage", query = "SELECT o FROM UserEntity o"),
+        @NamedQuery(name = "findByKeyword", query = "SELECT o FROM UserEntity o WHERE o.fullname LIKE ?1"),
+        @NamedQuery(name = "findByRole", query = "SELECT o FROM UserEntity o WHERE o.role = ?1"),
+        @NamedQuery(name = "findByUsername", query = "SELECT o FROM UserEntity o WHERE o.username = ?1"),
+        @NamedQuery(name = "findByUsernameAndId", query = "SELECT o FROM UserEntity o WHERE o.username = ?1 and o.id <> ?2"),
+        @NamedQuery(name = "findByEmail", query = "SELECT o FROM UserEntity o WHERE o.email = ?1")
+})
 @Entity
 @Table(name = "users")
 public class UserEntity {
@@ -20,8 +29,17 @@ public class UserEntity {
     private String email;
     @Column(name = "role")
     private int role;
-//    @OneToMany(mappedBy = "user")
-//    List<FavoritesEntity> listFavorites;
+
+    @OneToMany(mappedBy = "user")
+    List<FavoritesEntity> listFavorites;
+
+    public List<FavoritesEntity> getListFavorites() {
+        return listFavorites;
+    }
+
+    public void setListFavorites(List<FavoritesEntity> listFavorites) {
+        this.listFavorites = listFavorites;
+    }
 
     public UserEntity(String username, String password, String fullname, String email, int role) {
         this.username = username;

@@ -16,7 +16,9 @@ import java.util.ResourceBundle;
 public class Lab2Controller extends HttpServlet {
     @Inject
     private Lab2Service lab2Service;
+
     ResourceBundle rb = ResourceBundle.getBundle("messenge");
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String uri = req.getRequestURI();

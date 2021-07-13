@@ -1,5 +1,6 @@
 
 <%@include file="/commont/taglib.jsp"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div id="errorAlert" class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto;
 <c:if test="${messenge == null}" >

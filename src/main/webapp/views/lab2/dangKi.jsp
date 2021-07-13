@@ -32,6 +32,7 @@
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
                     <smail class="errorDki">Không được để trống tên đăng nhập!</smail>
+                    <p style="color: red; display: none" class="errorDkiName">Tên đăng nhập phải tối thiểu 5 kí tự và không được có kí tự đặc biệt!</p>
                 </div>
                 <div class="controlDK">
                     <lable>Mật khẩu:</lable>
@@ -74,7 +75,7 @@
                     <textarea name="note" cols="30" rows="5"></textarea>
                 </div>
 
-                <div class="btn btn-warning" id="submitDK">Đăng kí</div>
+                <div class="btn btn-warning" id="dangkiLab2Bai3">Đăng kí</div>
                 <button id="dangkisubmit" style="display: none" type="submit" formaction="<c:url value="/lab2/dang-ki"/>" class="btn btn-warning">Đăng kí</button>
             </form>
         </div>

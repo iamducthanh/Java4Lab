@@ -82,6 +82,20 @@
                                 <a class="nav-link onloader" href="<c:url value="/sign-in"/>">Đăng nhập</a>
                             </nav>
                         </div>
+
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError5"
+                           aria-expanded="false" aria-controls="pagesCollapseError5">
+                            Lab 6
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="pagesCollapseError5" aria-labelledby="headingOne"
+                             data-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link onloader" href="<c:url value="/lab6/find-favorites-by-username"/>">Tìm video yêu thích theo người dùng</a>
+                                <a class="nav-link onloader" href="<c:url value="/lab5/quan-li-user"/>">Quản lí user</a>
+                                <a class="nav-link onloader" href="<c:url value="/sign-in"/>">Đăng nhập</a>
+                            </nav>
+                        </div>
                     </nav>
                 </div>
             </div>

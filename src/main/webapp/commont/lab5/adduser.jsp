@@ -93,13 +93,21 @@
                     </c:if>
 
 
-                    <div class="btn btn-danger" onclick="closeForm()">Cancel</div>
+                    <a class="btn btn-danger onloader" href="<c:url value="/lab5/quan-li-user" />">Cancel</a>
+                    <div class="btn btn-primary" onclick="clearForm()">Reset</div>
                 </form>
             </div>
     </div>
 </div>
 <script>
-    function closeForm(){
-        document.getElementById("formThemUser").style.display = 'none';
+    function clearForm(){
+        document.getElementsByName("usernameBai3")[0].value = "";
+        document.getElementsByName("passwordBai3")[0].value = "";
+        document.getElementsByName("fullnameBai3")[0].value = "";
+        document.getElementsByName("emailBai3")[0].value = "";
     }
+
+    // function closeForm(){
+    //     document.getElementById("formThemUser").style.display = 'none';
+    // }
 </script>
