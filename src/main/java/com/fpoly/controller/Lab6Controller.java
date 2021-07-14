@@ -1,10 +1,6 @@
 package com.fpoly.controller;
 
-import com.fpoly.entity.FavoritesEntity;
-import com.fpoly.entity.UserEntity;
-import com.fpoly.entity.VideoEntity;
-import com.fpoly.service.impl.UserService;
-import com.fpoly.service.impl.VideoService;
+import com.fpoly.service.Lab6Service;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -14,15 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(urlPatterns = {"/lab6/find-favorites-by-username"})
+@WebServlet(urlPatterns = {
+        "/lab6/find-favorites-by-username",
+        "/lab6/find-video-by-favotites",
+        "/lab6/find-user-by-video",
+        "/lab6/filer-video"
+})
 public class Lab6Controller extends HttpServlet {
     @Inject
-    private UserService userService;
-
-    @Inject
-    private VideoService videoService;
+    private Lab6Service lab6Service;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,6 +27,13 @@ public class Lab6Controller extends HttpServlet {
         String uri = req.getRequestURI();
         if(uri.contains("/lab6/find-favorites-by-username")){
             view = "/views/lab6/findFavorites.jsp";
+        } else if(uri.contains("/lab6/find-video-by-favotites")){
+            view = "/views/lab6/fillVideo.jsp";
+        } else if(uri.contains("/lab6/find-user-by-video")){
+            view = "/views/lab6/fillUser.jsp";
+        } else if(uri.contains("/lab6/filer-video")){
+            lab6Service.filterVideo(req);
+            view = "/views/lab6/filterVideo.jsp";
         }
         RequestDispatcher rd = req.getRequestDispatcher(view);
         rd.forward(req, resp);
@@ -39,27 +43,17 @@ public class Lab6Controller extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String view = "";
         String uri = req.getRequestURI();
+        req.setCharacterEncoding("utf-8");
+        resp.setCharacterEncoding("utf-8");
         if(uri.contains("/lab6/find-favorites-by-username")){
-            String username = req.getParameter("username");
-            UserEntity user = new UserEntity();
-            user = userService.findByUsername(username);
-            if(user == null){
-                req.setAttribute("messenge","Người dùng này không tồn tại!");
-                req.setAttribute("username",username);
-            } else {
-                List<VideoEntity> listVideo = videoService.findByUser(user.getId());
-                if(!listVideo.isEmpty()){
-                    req.setAttribute("username",username);
-                    req.setAttribute("listVideo",listVideo);
-                    listVideo.forEach((fa)->{
-                        System.out.println(fa.toString());
-                    });
-                } else {
-                    req.setAttribute("messenge","Người dùng chưa thích video nào!");
-                    req.setAttribute("username",username);
-                }
-            }
+            lab6Service.findVideoByUsername(req);
             view = "/views/lab6/findFavorites.jsp";
+        } else if(uri.contains("/lab6/find-video-by-favotites")){
+            lab6Service.findVideoFavoritesByKeyword(req);
+            view = "/views/lab6/fillVideo.jsp";
+        } else if(uri.contains("/lab6/find-user-by-video")){
+            lab6Service.findUserByVideo(req);
+            view = "/views/lab6/fillUser.jsp";
         }
         RequestDispatcher rd = req.getRequestDispatcher(view);
         rd.forward(req, resp);

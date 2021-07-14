@@ -81,5 +81,11 @@ public class UserDao extends AbstractDao<UserEntity> implements IUserDao {
         return list.isEmpty() ? null : list.get(0);
     }
 
+    @Override
+    public List<UserEntity> findByVideo(int videoId) {
+        List<UserEntity> list = excuteQuery("findUserByVideo", UserEntity.class, videoId);
+        return list.isEmpty() ? null : list;
+    }
+
 
 }

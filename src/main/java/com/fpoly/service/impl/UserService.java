@@ -69,4 +69,9 @@ public class UserService implements IUserService {
     public UserEntity findByEmail(String email) {
         return userDao.findByEmail(email);
     }
+
+    @Override
+    public List<UserEntity> findByVideo(int videoId) {
+        return userDao.findByVideo(videoId);
+    }
 }

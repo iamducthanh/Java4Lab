@@ -92,8 +92,10 @@
                              data-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link onloader" href="<c:url value="/lab6/find-favorites-by-username"/>">Tìm video yêu thích theo người dùng</a>
-                                <a class="nav-link onloader" href="<c:url value="/lab5/quan-li-user"/>">Quản lí user</a>
-                                <a class="nav-link onloader" href="<c:url value="/sign-in"/>">Đăng nhập</a>
+                                <a class="nav-link onloader" href="<c:url value="/lab6/find-video-by-favotites"/>">Tìm video được yêu thích theo tiêu đề</a>
+                                <a class="nav-link onloader" href="<c:url value="/lab6/find-user-by-video"/>">Tìm người sử dụng thích video</a>
+                                <a class="nav-link onloader" href="<c:url value="/lab6/filer-video"/>">Lọc video</a>
+
                             </nav>
                         </div>
                     </nav>

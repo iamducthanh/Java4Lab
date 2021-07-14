@@ -4,7 +4,10 @@ import javax.persistence.*;
 import java.util.List;
 
 @NamedQueries({
-        @NamedQuery(name = "findByUser", query = "SELECT o.video FROM FavoritesEntity o WHERE o.user.id = ?1")
+        @NamedQuery(name = "findByUser", query = "SELECT o.video FROM FavoritesEntity o WHERE o.user.id = ?1"),
+        @NamedQuery(name = "findVideoFavoritesByKeyword", query = "SELECT DISTINCT o.video FROM FavoritesEntity o WHERE o.video.title LIKE ?1"),
+        @NamedQuery(name = "filterVideoFavorite", query = "SELECT o from VideoEntity o WHERE o.listFavorites IS NOT EMPTY"),
+        @NamedQuery(name = "filterVideoNotFavorite", query = "SELECT o from VideoEntity o WHERE o.listFavorites IS EMPTY")
 })
 @Entity
 @Table(name = "videos")

@@ -16,4 +16,5 @@ public interface IUserDao extends GenegicDao<UserEntity>{
     UserEntity findByUsername(String username);
     UserEntity findByUsernameAndId(String username, int id);
     UserEntity findByEmail(String email);
+    List<UserEntity> findByVideo(int videoId);
 }

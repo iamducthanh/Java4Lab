@@ -3,6 +3,8 @@
 <html>
 <head>
     <title><dec:title default="Lab java 4"></dec:title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <link href="<c:url value="/template/css/scrollbar.css"/>" rel="stylesheet"/>
     <link href="<c:url value="/template/styles.css"/>" rel="stylesheet"/>
     <link href="<c:url value="/template/sweetalert2.min.css"/>" rel="stylesheet"/>
@@ -11,8 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
             crossorigin="anonymous"></script>
     <link href="<c:url value="/template/styleMe.css"/>" rel="stylesheet"/>
-    <link href="<c:url value="/template/css/listItem.css"/>" rel="stylesheet"/>
-</head>
+    <link href="<c:url value="/template/css/listItem.css"/>" rel="stylesheet"/></head>
 <body class="sb-nav-fixed preloading">
 <div class="loader" style="display: none">
     <span class="fas fa-spinner xoay icon" style="color: #00aeff"></span>

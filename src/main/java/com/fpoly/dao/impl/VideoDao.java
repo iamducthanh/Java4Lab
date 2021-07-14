@@ -10,7 +10,24 @@ public class VideoDao extends AbstractDao<VideoEntity> implements IVideoDao {
     @Override
     public List<VideoEntity> findByUser(int idUser) {
         List<VideoEntity> listVideo = excuteQuery("findByUser", VideoEntity.class, idUser);
-        System.out.println(listVideo.size());
+        return listVideo == null ? null : listVideo;
+    }
+
+    @Override
+    public List<VideoEntity> findVideoFavoritesByKeyword(String keyword) {
+        List<VideoEntity> listVideo = excuteQuery("findVideoFavoritesByKeyword", VideoEntity.class, keyword);
+        return listVideo == null ? null : listVideo;
+    }
+
+    @Override
+    public List<VideoEntity> findVideoFavorite() {
+        List<VideoEntity> listVideo = excuteQuery("filterVideoFavorite", VideoEntity.class);
+        return listVideo == null ? null : listVideo;
+    }
+
+    @Override
+    public List<VideoEntity> findVideoNotFavorite() {
+        List<VideoEntity> listVideo = excuteQuery("filterVideoNotFavorite", VideoEntity.class);
         return listVideo == null ? null : listVideo;
     }
 }

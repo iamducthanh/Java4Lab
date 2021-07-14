@@ -10,7 +10,8 @@ import java.util.List;
         @NamedQuery(name = "findByRole", query = "SELECT o FROM UserEntity o WHERE o.role = ?1"),
         @NamedQuery(name = "findByUsername", query = "SELECT o FROM UserEntity o WHERE o.username = ?1"),
         @NamedQuery(name = "findByUsernameAndId", query = "SELECT o FROM UserEntity o WHERE o.username = ?1 and o.id <> ?2"),
-        @NamedQuery(name = "findByEmail", query = "SELECT o FROM UserEntity o WHERE o.email = ?1")
+        @NamedQuery(name = "findByEmail", query = "SELECT o FROM UserEntity o WHERE o.email = ?1"),
+        @NamedQuery(name = "findUserByVideo", query = "SELECT o.user FROM FavoritesEntity o WHERE o.video.id = ?1")
 })
 @Entity
 @Table(name = "users")

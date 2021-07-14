@@ -3,6 +3,11 @@
 
 <h4 style="margin-top: 30px">Danh sách người dùng</h4>
 <button class="btn btn-primary" onclick="onAddForm();">Thêm người dùng</button><br/><br/>
+<div class="card shadow mb-4" style="width: 100%;">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Danh sách người dùng</h6>
+    </div>
+    <div class="card-body">
 <div class="table-responsive">
     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
@@ -57,6 +62,8 @@
                         style="display: inline-block; background-color: rgb(221, 51, 51);" onclick="closeConfirmAlert();">Hủy bỏ</button>
             </div>
         </div>
+    </div>
+</div>
     </div>
 </div>
 <script>

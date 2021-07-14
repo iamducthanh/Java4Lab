@@ -15,4 +15,20 @@ public class VideoService implements IVideoService {
     public List<VideoEntity> findByUser(int id) {
         return videoDao.findByUser(id);
     }
+
+    @Override
+    public List<VideoEntity> findVideoFavoritesByKeyword(String keyword) {
+        keyword = "%" + keyword + "%";
+        return videoDao.findVideoFavoritesByKeyword(keyword);
+    }
+
+    @Override
+    public List<VideoEntity> findVideoFavorite() {
+        return videoDao.findVideoFavorite();
+    }
+
+    @Override
+    public List<VideoEntity> findVideoNotFavorite() {
+        return videoDao.findVideoNotFavorite();
+    }
 }

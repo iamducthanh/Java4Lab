@@ -17,4 +17,5 @@ public interface IUserService {
     UserEntity findByUsername(String username);
     UserEntity findByUsernameAndId(String username, int id);
     UserEntity findByEmail(String email);
+    List<UserEntity> findByVideo(int videoId);
 }
