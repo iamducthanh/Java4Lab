@@ -1,51 +1,51 @@
-document.getElementById("dangkiLab2Bai3").onclick = validateLab2Bai3;
+document.getElementById("subMitBean").onclick = validateSubmitBean;
 
-function validateLab2Bai3(){
-    var check = Number(0);
-    check = checkUsernameLab2(check);
-    check = checkPasswordLab2(check);
-    check = checkSoThich(check);
-    console.log(check);
-    if(check == 0){
-        document.getElementById("dangkisubmit").click();
+function validateSubmitBean() {
+    var check = 0;
+    var username = document.getElementsByName("username")[0].value;
+    var password = document.getElementsByName("password")[0].value;
+    if (username.trim().length == 0) {
+        onAlert(0);
+        check = check + 1;
+    } else {
+        close(0)
+        check = checkUsernameUnicodeLab3(check);
+    }
+    if (password.trim().length == 0) {
+        check = check + 1;
+        onAlert(1);
+    } else if (!checkNgaySinh()) {
+        check = check + 1;
+        document.getElementsByClassName("errorNgaySinh")[0].style.display = "unset";
+        close(1);
+    } else {
+        document.getElementsByClassName("errorNgaySinh")[0].style.display = "none";
+        close(1);
+    }
+    if (!checkSoThich()) {
+        check = check + 1;
+    }
+
+    if (check === 0) {
+        document.getElementById("dangKiSubBean").click();
     }
 }
 
-function onAlert(index){
+function onAlert(index) {
     document.getElementsByClassName("errorDki")[index].style.display = 'unset';
     document.getElementsByClassName("fa-exclamation-circle")[index].style.display = 'unset';
     document.getElementsByClassName("fa-check-circle")[index].style.display = 'none';
     document.getElementsByTagName("input")[index].style.border = '1px solid red';
 }
-function close(index){
+
+function close(index) {
     document.getElementsByClassName("errorDki")[index].style.display = 'none';
     document.getElementsByClassName("fa-exclamation-circle")[index].style.display = 'none';
     document.getElementsByClassName("fa-check-circle")[index].style.display = 'unset';
     document.getElementsByTagName("input")[index].style.border = '1px solid green'
 }
 
-const checkUsernameLab2 = (check) => {
-    if (document.getElementsByName('username')[0].value.trim().length == 0) {
-        onAlert(0);
-        return check = check + 1;
-    } else {
-        close(0)
-        check = checkUsernameUnicodeLab2(check);
-        return check;
-    }
-}
-
-const checkPasswordLab2 = (check) => {
-    if (document.getElementsByName('password')[0].value.trim().length == 0) {
-        onAlert(1);
-        return check = check + 1;
-    } else {
-        close(1)
-        return check
-    }
-}
-
-const checkSoThich = (check) => {
+const checkSoThich = function () {
     var soThich1 = document.getElementsByName("soThich")[0].checked;
     var soThich2 = document.getElementsByName("soThich")[1].checked;
     var soThich3 = document.getElementsByName("soThich")[2].checked;
@@ -54,16 +54,31 @@ const checkSoThich = (check) => {
     console.log(soThich2)
     console.log(soThich3)
     console.log(soThich4)
-    if(soThich1 == false && soThich2 == false && soThich3 == false && soThich4 == false){
+    if (soThich1 == false && soThich2 == false && soThich3 == false && soThich4 == false) {
         document.getElementById("errorSoThich").style.display = 'unset';
-        return check + 1;
+        return false;
     } else {
         document.getElementById("errorSoThich").style.display = 'none';
-        return check;
+        return true;
     }
 }
 
-const checkUsernameUnicodeLab2 = (check) => {
+const checkNgaySinh = function () {
+    var today = new Date();
+    var birthDate = new Date(document.getElementsByName("password")[0].value);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    if (age >= 18) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+const checkUsernameUnicodeLab3 = (check) => {
     if(/^[a-z\d_]{5,20}$/i.test(document.getElementsByName('username')[0].value)){
         document.getElementsByClassName("errorDkiName")[0].style.display = 'none';
         document.getElementsByClassName("fa-exclamation-circle")[0].style.display = 'none';

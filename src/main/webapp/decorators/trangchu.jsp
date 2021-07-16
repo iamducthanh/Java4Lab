@@ -35,8 +35,8 @@
         crossorigin="anonymous"></script>
 <script src="<c:url value="/template/scripts.js"/>"></script>
 <script src="<c:url value="/template/js/myscript.js"/>"></script>
-<script src="<c:url value="/template/js/validateLab2Bai3.js" />"></script>
-<script src="<c:url value="/template/js/validateAddUser.js" />"></script>
+<%--<script src="<c:url value="/template/js/validateLab2Bai3.js" />"></script>--%>
+<%--<script src="<c:url value="/template/js/validateAddUser.js" />"></script>--%>
 <script src="<c:url value="/template/sweetalert2.all.min.js" />"></script>
 
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>

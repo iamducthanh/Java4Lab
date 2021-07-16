@@ -5,6 +5,8 @@ import com.fpoly.entity.VideoEntity;
 import com.fpoly.service.IVideoService;
 
 import javax.inject.Inject;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class VideoService implements IVideoService {
@@ -30,5 +32,16 @@ public class VideoService implements IVideoService {
     @Override
     public List<VideoEntity> findVideoNotFavorite() {
         return videoDao.findVideoNotFavorite();
+    }
+
+    @Override
+    public List<VideoEntity> findVideoByDate(String fromDate, String toDate) {
+        try {
+            Date fromDateD = new SimpleDateFormat("yyyy-MM-dd").parse(fromDate);
+            Date toDateD = new SimpleDateFormat("yyyy-MM-dd").parse(toDate);
+            return videoDao.findVideoByDate(fromDateD, toDateD);
+        } catch (Exception e) {
+           return null;
+        }
     }
 }

@@ -95,6 +95,9 @@
                                 <a class="nav-link onloader" href="<c:url value="/lab6/find-video-by-favotites"/>">Tìm video được yêu thích theo tiêu đề</a>
                                 <a class="nav-link onloader" href="<c:url value="/lab6/find-user-by-video"/>">Tìm người sử dụng thích video</a>
                                 <a class="nav-link onloader" href="<c:url value="/lab6/filer-video"/>">Lọc video</a>
+                                <a class="nav-link onloader" href="<c:url value="/lab6/report"/>">Thống kê video</a>
+                                <a class="nav-link onloader" href="<c:url value="/lab6/find-Video-By-Date"/>">Tìm video theo ngày thích</a>
+                                <a class="nav-link onloader" href="<c:url value="/lab6/find-Video-By-Month"/>">Tìm video được thích theo tháng</a>
 
                             </nav>
                         </div>

@@ -76,10 +76,14 @@
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
                     <smail class="errorDki">Không được để trống tên đăng nhập!</smail>
+                    <p style="color: red; display: none" class="errorDkiName">Tên đăng nhập phải tối thiểu 5 kí tự và không được có kí tự đặc biệt!</p>
                 </div>
                 <div class="controlDK">
                     <lable>Hình ảnh:</lable>
-                    <input type="file" name="photo_file" required accept=".jpg, .png">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <input type="file" name="photo_file" id="hinhAnh3" required accept=".jpg, .png">
+                    <smail class="errorDki">Bạn phải chọn hình ảnh!</smail>
                 </div>
                 <div class="controlDK">
                     <lable>Ngày sinh:</lable>
@@ -124,8 +128,8 @@
                     <textarea name="note" cols="30" rows="5"></textarea>
                 </div>
 
-                <div class="btn btn-warning" id="submitDKLab3">Đăng kí</div>
-                <button id="dangkisubmit" style="display: none" type="submit"
+                <div class="btn btn-warning" id="submitLab3DK">Đăng kí</div>
+                <button id="dklab3Submit" style="display: none" type="submit"
                         formaction="<c:url value="/lab3/dang-ki"/>" class="btn btn-warning">Đăng kí
                 </button>
             </form>
@@ -133,6 +137,6 @@
     </div>
 </c:if>
 
-<script src="<c:url value="/template/js/validateDangKiLab3.js" />"></script>
+<script src="<c:url value="/template/js/validateSubmitLab3.js" />"></script>
 </body>
 </html>

@@ -1,7 +1,6 @@
-document.getElementById("submitDKLab3").onclick = validateDangKi;
+document.getElementById("submitLab3DK").onclick = validateDangKiLab33;
 
-function validateDangKi() {
-    alert("oke")
+function validateDangKiLab33() {
     var check = 0;
     var username = document.getElementsByName("username")[0].value;
     var password = document.getElementsByName("password")[0].value;
@@ -9,25 +8,39 @@ function validateDangKi() {
         onAlert(0);
         check = check + 1;
     } else {
-        close(0);
+        close(0)
+        check = checkUsernameUnicodeLab33(check);
     }
+    check = checkHinhAnh(check);
     if (password.trim().length == 0) {
         check = check + 1;
-        onAlert(1);
+        onAlert(2);
     } else if (!checkNgaySinh()) {
         check = check + 1;
         document.getElementsByClassName("errorNgaySinh")[0].style.display = "unset";
-        close(1);
+        close(2);
     } else {
         document.getElementsByClassName("errorNgaySinh")[0].style.display = "none";
-        close(1);
+        close(2);
     }
     if (!checkSoThich()) {
         check = check + 1;
     }
 
     if (check === 0) {
-        document.getElementById("dangkisubmit").click();
+        document.getElementById("dklab3Submit").click();
+    }
+}
+
+const checkHinhAnh = (check) => {
+    var hinhAnh = document.getElementById("hinhAnh3").value
+    console.log(hinhAnh)
+    if(hinhAnh.length == 0){
+        onAlert(1);
+        return check = check + 1;
+    } else {
+        close(1)
+        return check;
     }
 }
 
@@ -71,5 +84,21 @@ const checkNgaySinh = function () {
         return true;
     } else {
         return false;
+    }
+}
+
+const checkUsernameUnicodeLab33 = (check) => {
+    if(/^[a-z\d_]{5,20}$/i.test(document.getElementsByName('username')[0].value)){
+        document.getElementsByClassName("errorDkiName")[0].style.display = 'none';
+        document.getElementsByClassName("fa-exclamation-circle")[0].style.display = 'none';
+        document.getElementsByClassName("fa-check-circle")[0].style.display = 'unset';
+        document.getElementsByTagName("input")[0].style.border = '1px solid green'
+        return check;
+    } else {
+        document.getElementsByClassName("errorDkiName")[0].style.display = 'unset';
+        document.getElementsByClassName("fa-exclamation-circle")[0].style.display = 'unset';
+        document.getElementsByClassName("fa-check-circle")[0].style.display = 'none';
+        document.getElementsByTagName("input")[0].style.border = '1px solid red';
+        return check = check + 1;
     }
 }

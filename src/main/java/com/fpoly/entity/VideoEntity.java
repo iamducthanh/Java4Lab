@@ -7,7 +7,9 @@ import java.util.List;
         @NamedQuery(name = "findByUser", query = "SELECT o.video FROM FavoritesEntity o WHERE o.user.id = ?1"),
         @NamedQuery(name = "findVideoFavoritesByKeyword", query = "SELECT DISTINCT o.video FROM FavoritesEntity o WHERE o.video.title LIKE ?1"),
         @NamedQuery(name = "filterVideoFavorite", query = "SELECT o from VideoEntity o WHERE o.listFavorites IS NOT EMPTY"),
-        @NamedQuery(name = "filterVideoNotFavorite", query = "SELECT o from VideoEntity o WHERE o.listFavorites IS EMPTY")
+        @NamedQuery(name = "filterVideoNotFavorite", query = "SELECT o from VideoEntity o WHERE o.listFavorites IS EMPTY"),
+        @NamedQuery(name = "findVideoByDate", query = "SELECT DISTINCT o.video FROM FavoritesEntity o WHERE o.likeDate BETWEEN ?1 AND ?2"),
+        @NamedQuery(name = "findVideoByMonth", query = "SELECT DISTINCT o.video FROM FavoritesEntity o WHERE Month(o.likeDate) IN (?1)")
 })
 @Entity
 @Table(name = "videos")
@@ -71,6 +73,7 @@ public class VideoEntity {
     }
 
     public int getViews() {
+
         return views;
     }
 
