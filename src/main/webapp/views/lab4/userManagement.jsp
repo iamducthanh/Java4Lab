@@ -5,6 +5,8 @@
 </head>
 <body>
     <h3>User management</h3>
+    <%@include file="/commont/errorAlert.jsp"%>
+    <%@include file="/commont/successAlert3.jsp"%>
     <%@include file="/commont/lab4/formEdit.jsp"%>
     <%@include file="/commont/lab4/tableUser.jsp"%>
 

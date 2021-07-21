@@ -6,15 +6,20 @@
     <div class="form-group">
         <input type="text" class="form-control form-control-user"
                id="exampleInputEmail" aria-describedby="emailHelp"
-               placeholder="Tên đăng nhập" name="username" value=${username}>
+               placeholder="Tên đăng nhập" name="username" value="${username}"
+        >
     </div>
     <div class="form-group">
         <input type="password" class="form-control form-control-user"
-               id="exampleInputPassword" placeholder="Mật khẩu" name="password" value=${password}>
+               id="exampleInputPassword" placeholder="Mật khẩu" name="password" value="${password}">
     </div>
     <div class="form-group">
         <div class="custom-control custom-checkbox small">
-            <input type="checkbox" name="remember" class="custom-control-input" id="customCheck">
+            <input type="checkbox"
+            <c:if test="${remember == true}">
+                    checked
+            </c:if>
+                   name="remember" class="custom-control-input" id="customCheck">
             <label class="custom-control-label" for="customCheck">Remember
                 Me</label>
         </div>

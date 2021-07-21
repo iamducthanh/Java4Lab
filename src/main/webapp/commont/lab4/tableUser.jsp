@@ -20,7 +20,7 @@
         <c:forEach var="userItem" items="${listUser}">
             <tr>
                 <td>${userItem.username}</td>
-                <td>${userItem.password}</td>
+                <td><input type="password" value="${userItem.password}" style="border: none" readonly></td>
                 <td>${userItem.remember}</td>
             </tr>
         </c:forEach>

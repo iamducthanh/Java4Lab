@@ -8,8 +8,8 @@
                 <div class="small mb-1">SKU: BST-498</div>
                 <h1 class="display-5 fw-bolder">${model.tenItem}</h1>
                 <div class="fs-5 mb-5">
-                    <span class="text-decoration-line-through" style="color: red">Giá mới: $${model.giaGiam}</span> <br/>
-                    <span class="text-decoration-line-through">Giá cũ: <strike>$${model.giaItem}</strike></span> <br/>
+                    <span class="text-decoration" style="color: red">Giá mới: $${model.giaGiam}</span> <br/>
+                    <span class="text-decoration-line-through">Giá cũ: $${model.giaItem}</span> <br/>
                     <c:if test="${model.giaGiam >= 50}">
                         <span class="mr-2">Mức giá: Giá cao</span>
                     </c:if>
@@ -21,7 +21,7 @@
                     </c:if>
                     <br/>
                     <br/>
-                    <span class="text-decoration-line-through">Ngày: ${model.ngayNhap}</span>
+                    <span class="text-decoration">Ngày: ${model.ngayNhap}</span>
                 </div>
                 <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
                 <div class="d-flex">
